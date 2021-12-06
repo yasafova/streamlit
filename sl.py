@@ -5,13 +5,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import math
 st.write('# Trying streamlit for the first time with probability')
-st.write('hello Chris')
 #streamlit run C:/Users/Daria/PycharmProjects/streamlit_histogram/sl.py
 
-#a = random.randrange(1,10) *100
-#b = random.randrange(1,10) *10
-a = 500
-b = 100
+a = random.randrange(1,10) *100
+b = random.randrange(1,10) *10
+#a = 500
+#b = 100
 st.write('Normal distribution with mean = ', a, 'and standard deviation = ', b)
 x = np.random.normal(loc= a, scale=b, size=10000)
 
