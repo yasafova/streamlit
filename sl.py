@@ -6,11 +6,12 @@ import seaborn as sns
 import math
 st.write('# Trying streamlit for the first time with probability')
 #streamlit run C:/Users/Daria/PycharmProjects/streamlit_histogram/sl.py
-
+number = st.slider('Pick a number', 0, 10, 2)
 a = random.randrange(1,10) *100
 b = random.randrange(1,10) *10
 #a = 500
 #b = 100
+st.write('Mean and standard deviation are being randomly generated each time')
 st.write('Normal distribution with mean = ', a, 'and standard deviation = ', b)
 x = np.random.normal(loc= a, scale=b, size=10000)
 
@@ -32,11 +33,11 @@ st.line_chart(y)
 st.write('mean over these drawn samples is ', avg)
 #st.pyplot(y)
 
-bins = (np.max(y) - np.min(y))/100
-r_bins = math.ceil(bins)
-st.write('how many bins do we need? as many as hundreds, that is ', r_bins)
+#bins = (np.max(y) - np.min(y))/100
+#r_bins = math.ceil(bins)
 st.write('we have numbers that span over ', math.floor(np.min(y)/100)*100, '-', math.ceil(np.max(y)/100)*100)
-
+bins = math.ceil(np.max(y)/100) - math.floor(np.min(y)/100)
+st.write('how many bins do we need? as many as hundreds, that is ', bins)
 for i in range(math.floor(np.min(y)/100),math.ceil(np.max(y)/100)):
     st.write(i)
 for i in range(math.floor(np.min(y)/100),math.ceil(np.max(y)/100)+1):
@@ -57,14 +58,14 @@ for i in range(math.floor(np.min(y)/100),math.ceil(np.max(y)/100)):
         line = line+(', '+ str(i*100)+'-'+str((i+1)*100))
 
 st.write(line)
-print('min', np.min(y), 'max', np.max(y),'bins',bins,'rounded up bins', r_bins)
+#print('min', np.min(y), 'max', np.max(y),'bins',bins,'rounded up bins', r_bins)
 #to find how many bins we need
 # #find biggest number, find smallest number
 #difference = biggest - smallest
 #bins = round up(difference / 100)
 
 
-fig = sns.displot(data=y, bins = r_bins)
+fig = sns.displot(data=y, bins = bins)
 st.pyplot(fig)
 
 # Bootstrap Sampling
